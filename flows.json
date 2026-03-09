@@ -1,0 +1,1281 @@
+[
+    {
+        "id": "164db5ed380367c7",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "878502a7092bfd85",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "51eadac55e1d078f",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "833e43aaf8b1e2bb",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c53d46b4fc31c1f6",
+        "type": "tab",
+        "label": "Flow 5",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "27b50404ac8d241e",
+        "type": "tab",
+        "label": "Flow 6",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b38c4b750ec14869",
+        "type": "tab",
+        "label": "Flow 7",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "aef745b8f4254721",
+        "type": "tab",
+        "label": "Flow 8",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "81d59507818080f8",
+        "type": "tab",
+        "label": "Flow 9",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d58318a28571c3cf",
+        "type": "tab",
+        "label": "Flow 10",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9b351668549ca224",
+        "type": "tab",
+        "label": "Flow 11",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8e9fbbf1ee9a838e",
+        "type": "tab",
+        "label": "Flow 12",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e6fddbf5adf154ca",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "9fcdc2f5153886d0",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "5129be689f1a329c",
+        "type": "ui-page",
+        "name": "Page 1",
+        "ui": "e6fddbf5adf154ca",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "9fcdc2f5153886d0",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": 0,
+                "cols": 3
+            },
+            {
+                "name": "Tablet",
+                "px": 576,
+                "cols": 6
+            },
+            {
+                "name": "Small Desktop",
+                "px": 768,
+                "cols": 9
+            },
+            {
+                "name": "Desktop",
+                "px": 1024,
+                "cols": 12
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "073d1b3bf5f36c27",
+        "type": "ui-group",
+        "name": "PC Health",
+        "page": "5129be689f1a329c",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "8e4ede670a6d7e3b",
+        "type": "inject",
+        "z": "164db5ed380367c7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 360,
+        "y": 160,
+        "wires": [
+            [
+                "2a3155bfb16fa918"
+            ]
+        ]
+    },
+    {
+        "id": "2a3155bfb16fa918",
+        "type": "debug",
+        "z": "164db5ed380367c7",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "f2b1bca3dc2cefb8",
+        "type": "inject",
+        "z": "878502a7092bfd85",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 160,
+        "wires": [
+            [
+                "58da3e579c5b8e55"
+            ]
+        ]
+    },
+    {
+        "id": "58da3e579c5b8e55",
+        "type": "function",
+        "z": "878502a7092bfd85",
+        "name": "function 1",
+        "func": "// The initial payload is a timestamp in milliseconds\nlet date = new Date(msg.payload);\n\n// We are converting the timestamp to a human-readable ISO string\nmsg.payload = `Current Time: ${date.toISOString()}`;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 160,
+        "wires": [
+            [
+                "e7df42b69c4ff4c2"
+            ]
+        ]
+    },
+    {
+        "id": "e7df42b69c4ff4c2",
+        "type": "debug",
+        "z": "878502a7092bfd85",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "df9a25440b0803c3",
+        "type": "inject",
+        "z": "51eadac55e1d078f",
+        "name": "Test Temp = 22",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"city\": \"Paris\", \"temp\": 22}",
+        "payloadType": "json",
+        "x": 220,
+        "y": 180,
+        "wires": [
+            [
+                "7038c0463126df3d"
+            ]
+        ]
+    },
+    {
+        "id": "91e063ee1e876fec",
+        "type": "inject",
+        "z": "51eadac55e1d078f",
+        "name": "Test Temp = 30",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"city\": \"Madrid\", \"temp\": 30}",
+        "payloadType": "json",
+        "x": 220,
+        "y": 100,
+        "wires": [
+            [
+                "7038c0463126df3d"
+            ]
+        ]
+    },
+    {
+        "id": "7038c0463126df3d",
+        "type": "switch",
+        "z": "51eadac55e1d078f",
+        "name": "TempRouter",
+        "property": "payload.temp",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "25",
+                "vt": "str"
+            },
+            {
+                "t": "lt",
+                "v": "25",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 470,
+        "y": 140,
+        "wires": [
+            [
+                "3902bbd31dd90e8c"
+            ],
+            [
+                "a9d7c141eedf4745"
+            ]
+        ]
+    },
+    {
+        "id": "3902bbd31dd90e8c",
+        "type": "change",
+        "z": "51eadac55e1d078f",
+        "name": "HotPayload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"Hot!\"",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 120,
+        "wires": [
+            [
+                "beefd9fbc0c8a309"
+            ]
+        ]
+    },
+    {
+        "id": "a9d7c141eedf4745",
+        "type": "change",
+        "z": "51eadac55e1d078f",
+        "name": "ColdPayload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"Cold\"",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 160,
+        "wires": [
+            [
+                "c6228774e1d8fff7"
+            ]
+        ]
+    },
+    {
+        "id": "beefd9fbc0c8a309",
+        "type": "debug",
+        "z": "51eadac55e1d078f",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 119.99999999999999,
+        "wires": []
+    },
+    {
+        "id": "c6228774e1d8fff7",
+        "type": "debug",
+        "z": "51eadac55e1d078f",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "46376a27bbcfbb3e",
+        "type": "inject",
+        "z": "833e43aaf8b1e2bb",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 160,
+        "wires": [
+            [
+                "d6a9c0336aeac504"
+            ]
+        ]
+    },
+    {
+        "id": "d6a9c0336aeac504",
+        "type": "http request",
+        "z": "833e43aaf8b1e2bb",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://catfact.ninja/fact",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "6c3e146298dc2a63",
+                "b77cbd9bcaac893e"
+            ]
+        ]
+    },
+    {
+        "id": "4b0d8cb046cffdc8",
+        "type": "debug",
+        "z": "833e43aaf8b1e2bb",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "6c3e146298dc2a63",
+        "type": "change",
+        "z": "833e43aaf8b1e2bb",
+        "name": "GetFact",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.fact",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 160,
+        "wires": [
+            [
+                "4b0d8cb046cffdc8"
+            ]
+        ]
+    },
+    {
+        "id": "b77cbd9bcaac893e",
+        "type": "debug",
+        "z": "833e43aaf8b1e2bb",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "aab50282ecec0884",
+        "type": "http in",
+        "z": "c53d46b4fc31c1f6",
+        "name": "Login",
+        "url": "/log",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 180,
+        "wires": [
+            [
+                "875668c65eb679c3"
+            ]
+        ]
+    },
+    {
+        "id": "875668c65eb679c3",
+        "type": "function",
+        "z": "c53d46b4fc31c1f6",
+        "name": "function 2",
+        "func": "// Extract the IP of the requester (from req.ip) and the current timestamp\nmsg.payload = `[${new Date().toISOString()}] Visited by IP: ${msg.req.ip}\\n`;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "000b7a6cb862e95c",
+                "7b2febbecfacd05b"
+            ]
+        ]
+    },
+    {
+        "id": "000b7a6cb862e95c",
+        "type": "file",
+        "z": "c53d46b4fc31c1f6",
+        "name": "filewrite",
+        "filename": "d:\\gitFolders\\nodeflows\\visits.log",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 680,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7b2febbecfacd05b",
+        "type": "http response",
+        "z": "c53d46b4fc31c1f6",
+        "name": "OutResponse",
+        "statusCode": "200",
+        "headers": {
+            "content-type": "application/json",
+            "Status": "Logged"
+        },
+        "x": 520,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "050142c71da6f5dd",
+        "type": "OS",
+        "z": "27b50404ac8d241e",
+        "name": "",
+        "x": 450,
+        "y": 200,
+        "wires": [
+            [
+                "7910a081a9fdce73"
+            ]
+        ]
+    },
+    {
+        "id": "f1809ee838a2253b",
+        "type": "CPUs",
+        "z": "27b50404ac8d241e",
+        "name": "",
+        "x": 450,
+        "y": 260,
+        "wires": [
+            [
+                "7910a081a9fdce73"
+            ]
+        ]
+    },
+    {
+        "id": "484401e2266a38fb",
+        "type": "inject",
+        "z": "27b50404ac8d241e",
+        "name": "RepeatInject",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 220,
+        "wires": [
+            [
+                "050142c71da6f5dd",
+                "f1809ee838a2253b",
+                "33125fbb063f6b15"
+            ]
+        ]
+    },
+    {
+        "id": "33125fbb063f6b15",
+        "type": "Uptime",
+        "z": "27b50404ac8d241e",
+        "name": "",
+        "x": 460,
+        "y": 320,
+        "wires": [
+            [
+                "7910a081a9fdce73"
+            ]
+        ]
+    },
+    {
+        "id": "7910a081a9fdce73",
+        "type": "debug",
+        "z": "27b50404ac8d241e",
+        "name": "debug 7",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "235fecc0bc1cd20e",
+        "type": "inject",
+        "z": "b38c4b750ec14869",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 100,
+        "wires": [
+            [
+                "eaf565c48dec73b3"
+            ]
+        ]
+    },
+    {
+        "id": "eaf565c48dec73b3",
+        "type": "exec",
+        "z": "b38c4b750ec14869",
+        "command": "ipconfig",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "SysInfo",
+        "x": 400,
+        "y": 120,
+        "wires": [
+            [
+                "6b6681ddd48ea8ae"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "6b6681ddd48ea8ae",
+        "type": "function",
+        "z": "b38c4b750ec14869",
+        "name": "function 3",
+        "func": "// Look for an IPv4 address pattern (e.g., \"IPv4 Address. . . . . . . . . . . : 192.168.1.100\")\nconst str = msg.payload.toString();\nconst regex = /IPv4 Address[^:]+:\\s*([0-9.]+)/i; \nconst match = str.match(regex);\n\nif (match && match.length > 1) {\n    msg.payload = \"Your local IP is: \" + match[1];\n} else {\n    msg.payload = \"Could not find IP.\";\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 120,
+        "wires": [
+            [
+                "aa8fde505cd56358"
+            ]
+        ]
+    },
+    {
+        "id": "aa8fde505cd56358",
+        "type": "debug",
+        "z": "b38c4b750ec14869",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "565aee10bf5030a7",
+        "type": "exec",
+        "z": "aef745b8f4254721",
+        "command": "wmic cpu get loadpercentage",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Get load",
+        "x": 400,
+        "y": 80,
+        "wires": [
+            [
+                "187f27015fe44df1"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "cba734d1b344a584",
+        "type": "inject",
+        "z": "aef745b8f4254721",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 80,
+        "wires": [
+            [
+                "565aee10bf5030a7"
+            ]
+        ]
+    },
+    {
+        "id": "187f27015fe44df1",
+        "type": "function",
+        "z": "aef745b8f4254721",
+        "name": "function 4",
+        "func": "// Remove non-numeric characters (like \"LoadPercentage\")\nconst loadStr = msg.payload.toString().replace(/[^0-9]/g, '');\nmsg.payload = parseInt(loadStr, 10);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 80,
+        "wires": [
+            [
+                "e83634837f1b5a15",
+                "c471a0800fe0a3af"
+            ]
+        ]
+    },
+    {
+        "id": "e83634837f1b5a15",
+        "type": "ui-gauge",
+        "z": "aef745b8f4254721",
+        "name": "PC Health",
+        "group": "073d1b3bf5f36c27",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "4",
+        "height": "4",
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "gauge",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "4",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "7",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "10",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 870,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c471a0800fe0a3af",
+        "type": "debug",
+        "z": "aef745b8f4254721",
+        "name": "debug 9",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ad717fba96995853",
+        "type": "http in",
+        "z": "81d59507818080f8",
+        "name": "ToggleMe",
+        "url": "/toggle",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 100,
+        "wires": [
+            [
+                "5c2d21795c081752"
+            ]
+        ]
+    },
+    {
+        "id": "5c2d21795c081752",
+        "type": "function",
+        "z": "81d59507818080f8",
+        "name": "function 5",
+        "func": "// Retrieve the current state from flow context (default to false if it doesn't exist yet)\nlet currentState = flow.get(\"mySwitchState\") || false;\n\n// Toggle it\nlet newState = !currentState;\n\n// Save it back to context so the next run remembers it\nflow.set(\"mySwitchState\", newState);\n\nmsg.payload = `The switch is now: ${newState ? 'ON' : 'OFF'}`;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 180,
+        "wires": [
+            [
+                "c424d0c7cfd94d33"
+            ]
+        ]
+    },
+    {
+        "id": "c424d0c7cfd94d33",
+        "type": "http response",
+        "z": "81d59507818080f8",
+        "name": "Output",
+        "statusCode": "",
+        "headers": {},
+        "x": 590,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "fd6990ad82957995",
+        "type": "debug",
+        "z": "d58318a28571c3cf",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "35ccef743789c124",
+        "type": "inject",
+        "z": "d58318a28571c3cf",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 100,
+        "wires": [
+            [
+                "f62b72cff90dc496"
+            ]
+        ]
+    },
+    {
+        "id": "f62b72cff90dc496",
+        "type": "http request",
+        "z": "d58318a28571c3cf",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://this-url-is-invalid-and-fake.com",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 310,
+        "y": 100,
+        "wires": [
+            [
+                "fd6990ad82957995"
+            ]
+        ]
+    },
+    {
+        "id": "136c65e7469b6b31",
+        "type": "catch",
+        "z": "d58318a28571c3cf",
+        "name": "",
+        "scope": [
+            "f62b72cff90dc496"
+        ],
+        "uncaught": false,
+        "x": 370,
+        "y": 200,
+        "wires": [
+            [
+                "4d78191bca7da008"
+            ]
+        ]
+    },
+    {
+        "id": "4d78191bca7da008",
+        "type": "function",
+        "z": "d58318a28571c3cf",
+        "name": "function 6",
+        "func": "msg.payload = `GLOBAL ERROR CAUGHT!\nNode ID: ${msg.error.source.id}\nError Message: ${msg.error.message}`;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 200,
+        "wires": [
+            [
+                "b77c69714679fff5",
+                "fd6990ad82957995"
+            ]
+        ]
+    },
+    {
+        "id": "b77c69714679fff5",
+        "type": "file",
+        "z": "d58318a28571c3cf",
+        "name": "Loger",
+        "filename": "d:\\gitFolders\\nodeflows\\error.log",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 970,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d45e161aa372cb38",
+        "type": "http in",
+        "z": "9b351668549ca224",
+        "name": "MCPTools",
+        "url": "/mcp/tools",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 280,
+        "wires": [
+            [
+                "c99b6e893e072de5"
+            ]
+        ]
+    },
+    {
+        "id": "c99b6e893e072de5",
+        "type": "template",
+        "z": "9b351668549ca224",
+        "name": "ToolTemplate",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n  \"tools\": [\n    {\n      \"name\": \"get_sys_health\",\n      \"description\": \"Returns the CPU and memory layout of the host Windows machine.\",\n      \"inputSchema\": { \"type\": \"object\", \"properties\": {} }\n    }\n  ]\n}",
+        "output": "str",
+        "x": 490,
+        "y": 200,
+        "wires": [
+            [
+                "029babdb07326c78"
+            ]
+        ]
+    },
+    {
+        "id": "029babdb07326c78",
+        "type": "http response",
+        "z": "9b351668549ca224",
+        "name": "Mcpresponse",
+        "statusCode": "",
+        "headers": {},
+        "x": 780,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "4c37f57d14046829",
+        "type": "exec",
+        "z": "8e9fbbf1ee9a838e",
+        "command": "systeminfo",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 510,
+        "y": 140,
+        "wires": [
+            [
+                "e60c8427ece3b3e2",
+                "762e2c5da0579e13"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "e60c8427ece3b3e2",
+        "type": "function",
+        "z": "8e9fbbf1ee9a838e",
+        "name": "function 7",
+        "func": "msg.payload = \"Extracted Host Spec Data: \\n\" + msg.payload.toString().substring(0, 500);\n// The MCP protocol expects the result to be correctly wrapped, which the MCP Return node usually handles.\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 140,
+        "wires": [
+            [
+                "7c3ef3844da8ffde"
+            ]
+        ]
+    },
+    {
+        "id": "762e2c5da0579e13",
+        "type": "debug",
+        "z": "8e9fbbf1ee9a838e",
+        "name": "debug 11",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "e9213ca5cd60329d",
+        "type": "http in",
+        "z": "8e9fbbf1ee9a838e",
+        "name": "pc_health",
+        "url": "/api/pc_health",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 100,
+        "wires": [
+            [
+                "4c37f57d14046829"
+            ]
+        ]
+    },
+    {
+        "id": "7c3ef3844da8ffde",
+        "type": "http response",
+        "z": "8e9fbbf1ee9a838e",
+        "name": "PCOutHealth",
+        "statusCode": "",
+        "headers": {},
+        "x": 990,
+        "y": 140,
+        "wires": []
+    }
+]
