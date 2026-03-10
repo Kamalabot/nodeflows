@@ -136,6 +136,22 @@
         "env": []
     },
     {
+        "id": "8e0c0ac424cfc508",
+        "type": "tab",
+        "label": "ModSim",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a0e1484597e10ac4",
+        "type": "tab",
+        "label": "Flow 18",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "a03ac9dde6adf6f8",
         "type": "junction",
         "z": "4d7685f1362fd873",
@@ -331,6 +347,66 @@
         "type": "sqlitedb",
         "db": "mysqlite00.db",
         "mode": "RWC"
+    },
+    {
+        "id": "cfaf5b1b490d1f1f",
+        "type": "modbus-client",
+        "name": "Local Sim",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "10505",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "7e0e8d275d67854b",
+        "type": "modbus-client",
+        "name": "LocSim2",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "10505",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
     },
     {
         "id": "8e4ede670a6d7e3b",
@@ -2714,6 +2790,374 @@
         "headers": {},
         "x": 773.1999969482422,
         "y": 593.2000122070312,
+        "wires": []
+    },
+    {
+        "id": "e2f170af310ebc23",
+        "type": "modbus-server",
+        "z": "8e0c0ac424cfc508",
+        "name": "Simulated PLC",
+        "logEnabled": false,
+        "hostname": "0.0.0.0",
+        "serverPort": "10505",
+        "responseDelay": 10,
+        "delayUnit": "ms",
+        "coilsBufferSize": 10000,
+        "holdingBufferSize": 10000,
+        "inputBufferSize": 10000,
+        "discreteBufferSize": 10000,
+        "showErrors": false,
+        "showStatusActivities": false,
+        "x": 400,
+        "y": 80,
+        "wires": [
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "8c4592a838b4c2b9",
+        "type": "inject",
+        "z": "8e0c0ac424cfc508",
+        "name": "Write Values [12, 34, 56]",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.5,
+        "topic": "",
+        "payload": "[12,34,56]",
+        "payloadType": "json",
+        "x": 430,
+        "y": 180,
+        "wires": [
+            [
+                "c0b2d3e4f5a6b7c8"
+            ]
+        ]
+    },
+    {
+        "id": "c0b2d3e4f5a6b7c8",
+        "type": "modbus-write",
+        "z": "8e0c0ac424cfc508",
+        "name": "Write to PLC (FC16)",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "0",
+        "quantity": "1",
+        "server": "cfaf5b1b490d1f1f",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 800,
+        "y": 180,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "1a2b3c4d5e6f7g8h",
+        "type": "modbus-read",
+        "z": "8e0c0ac424cfc508",
+        "name": "Poll PLC (FC3)",
+        "topic": "",
+        "showStatusActivities": false,
+        "logIOActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "0",
+        "quantity": "3",
+        "rate": "1",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "server": "cfaf5b1b490d1f1f",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "x": 400,
+        "y": 280,
+        "wires": [
+            [
+                "9i0j1k2l3m4n5o6p"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "9i0j1k2l3m4n5o6p",
+        "type": "function",
+        "z": "8e0c0ac424cfc508",
+        "name": "Save to Flow Context",
+        "func": "flow.set(\"simData\", {\n    timestamp: new Date().toISOString(),\n    registers: msg.payload,\n    status: \"Active\"\n});\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a1b2c3d4e5f6g7h8",
+        "type": "http in",
+        "z": "8e0c0ac424cfc508",
+        "name": "",
+        "url": "/api/simdata",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 390,
+        "y": 400,
+        "wires": [
+            [
+                "i9j0k1l2m3n4o5p6"
+            ]
+        ]
+    },
+    {
+        "id": "i9j0k1l2m3n4o5p6",
+        "type": "function",
+        "z": "8e0c0ac424cfc508",
+        "name": "Read Context",
+        "func": "msg.payload = flow.get(\"simData\") || { error: \"Waiting for first Modbus read...\" };\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 400,
+        "wires": [
+            [
+                "q7r8s9t0u1v2w3x4"
+            ]
+        ]
+    },
+    {
+        "id": "q7r8s9t0u1v2w3x4",
+        "type": "http response",
+        "z": "8e0c0ac424cfc508",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 790,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "sim_plc_server",
+        "type": "modbus-server",
+        "z": "a0e1484597e10ac4",
+        "name": "Simulated PLC",
+        "logEnabled": false,
+        "hostname": "0.0.0.0",
+        "serverPort": "10506",
+        "responseDelay": 10,
+        "delayUnit": "ms",
+        "coilsBufferSize": 10000,
+        "holdingBufferSize": 10000,
+        "inputBufferSize": 10000,
+        "discreteBufferSize": 10000,
+        "showErrors": false,
+        "showStatusActivities": false,
+        "x": 440,
+        "y": 60,
+        "wires": [
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "write_trigger",
+        "type": "inject",
+        "z": "a0e1484597e10ac4",
+        "name": "Tick (1s)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.5,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 430,
+        "y": 160,
+        "wires": [
+            [
+                "pattern_generator"
+            ]
+        ]
+    },
+    {
+        "id": "pattern_generator",
+        "type": "function",
+        "z": "a0e1484597e10ac4",
+        "name": "Generate Pattern Data",
+        "func": "// Initialize Node Context state for dynamic patterns\nlet count = context.get(\"count\") || 0;\nlet temp = context.get(\"temp\") || 200;\n\n// 1. Counter (0 to 1000 then loop)\ncount = (count + 1) % 1000;\n\n// 2. Sine Wave (simulating a cyclic process like 0-100%)\n// Scale sine wave from -1..1 to 0..1000\nlet sineValue = Math.round((Math.sin(count * 0.2) + 1) * 500);\n\n// 3. Random Noise (simulating pressure jitter 500 +/- 20)\nlet randomJitter = 500 + Math.floor(Math.random() * 40) - 20;\n\n// 4. Sawtooth Wave (0 to 100 ramp up and drop)\nlet sawtooth = count % 100;\n\n// 5. Simulated Temperature (Drifts slowly between 150 and 250)\ntemp = temp + (Math.random() > 0.5 ? 1 : -1);\nif (temp > 250) temp = 250;\nif (temp < 150) temp = 150;\n\n// Save state for the next tick\ncontext.set(\"count\", count);\ncontext.set(\"temp\", temp);\n\n// Combine into an array of 5 holding registers (16-bit integers)\nmsg.payload = [count, sineValue, randomJitter, sawtooth, temp];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 160,
+        "wires": [
+            [
+                "bulk_writer"
+            ]
+        ]
+    },
+    {
+        "id": "bulk_writer",
+        "type": "modbus-write",
+        "z": "a0e1484597e10ac4",
+        "name": "Write 5 Registers",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "MHoldingRegisters",
+        "adr": "0",
+        "quantity": "5",
+        "server": "7e0e8d275d67854b",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 910,
+        "y": 160,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "plc_poller",
+        "type": "modbus-read",
+        "z": "a0e1484597e10ac4",
+        "name": "Poll PLC (FC3)",
+        "topic": "",
+        "showStatusActivities": false,
+        "logIOActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "0",
+        "quantity": "5",
+        "rate": "1",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "server": "7e0e8d275d67854b",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "x": 440,
+        "y": 260,
+        "wires": [
+            [
+                "flow_context_saver"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "flow_context_saver",
+        "type": "function",
+        "z": "a0e1484597e10ac4",
+        "name": "Format & Save to Context",
+        "func": "let regs = msg.payload;\n\n// We translate the raw Modbus arrays into a friendly SCADA schema\nlet data = {\n    timestamp: new Date().toISOString(),\n    rawRegisters: regs,\n    sensors: {\n        cycleCount: regs[0],\n        sineWaveValue: regs[1],\n        pressureNoise: regs[2],\n        sawtoothPattern: regs[3],\n        temperatureC: +(regs[4] / 10).toFixed(1) // E.g., translates 215 back to 21.5 C\n    },\n    status: \"Active\"\n};\n\n// Save globally to this flow\nflow.set(\"simData\", data);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "http_api_in",
+        "type": "http in",
+        "z": "a0e1484597e10ac4",
+        "name": "",
+        "url": "/api/scada",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 420,
+        "y": 380,
+        "wires": [
+            [
+                "http_api_context_read"
+            ]
+        ]
+    },
+    {
+        "id": "http_api_context_read",
+        "type": "function",
+        "z": "a0e1484597e10ac4",
+        "name": "Read Context",
+        "func": "msg.payload = flow.get(\"simData\") || { error: \"Waiting for first Modbus read...\" };\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 380,
+        "wires": [
+            [
+                "http_api_response"
+            ]
+        ]
+    },
+    {
+        "id": "http_api_response",
+        "type": "http response",
+        "z": "a0e1484597e10ac4",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 830,
+        "y": 380,
         "wires": []
     }
 ]
