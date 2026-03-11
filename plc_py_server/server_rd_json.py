@@ -1,55 +1,24 @@
-import json
+"""
+MCP + Chat Server — Thin Entrypoint
+
+Wires together:
+    Part 1 (mcp_tools)  → Mount("/sse")  — MCP Streamable HTTP for AI clients
+    Part 2 (model_chat) → Route("/chat") — LM Studio agentic endpoint
+"""
+
 import anyio
-import httpx
 import uvicorn
-from pathlib import Path
 from uuid import uuid4
 from contextlib import asynccontextmanager
 
 from starlette.applications import Starlette
-from starlette.routing import Mount
+from starlette.routing import Mount, Route
 
-from mcp.server import Server
 from mcp.server.streamable_http import StreamableHTTPServerTransport
-from mcp.types import Tool, TextContent
 
-# ── Load tool definitions from JSON ──────────────────────────────────
-TOOLS_FILE = Path(__file__).parent / "tools.json"
-
-with open(TOOLS_FILE, "r") as f:
-    TOOL_DEFS = json.load(f)
-
-# Build a quick lookup: tool_name → url
-TOOL_URL_MAP = {t["name"]: t["url"] for t in TOOL_DEFS}
-
-# ── Initialize the MCP Server ────────────────────────────────────────
-mcp = Server("nodered-bridge-py")
-
-
-@mcp.list_tools()
-async def list_tools() -> list[Tool]:
-    """Dynamically build the tool list from the loaded JSON."""
-    return [
-        Tool(
-            name=t["name"],
-            description=t["description"],
-            inputSchema={"type": "object", "properties": {}},
-        )
-        for t in TOOL_DEFS
-    ]
-
-
-@mcp.call_tool()
-async def call_tool(name: str, arguments: dict) -> list[TextContent]:
-    """Route the tool call to the URL defined in the JSON config."""
-    url = TOOL_URL_MAP.get(name)
-    if url is None:
-        raise ValueError(f"Tool not found: {name}")
-
-    async with httpx.AsyncClient() as client:
-        response = await client.get(url)
-        return [TextContent(type="text", text=response.text)]
-
+from tools_config import TOOL_DEFS, TOOLS_FILE
+from mcp_tools import mcp
+from model_chat import chat_endpoint, LM_STUDIO_MODEL, LM_STUDIO_BASE_URL
 
 # ── ASGI / Transport wiring ──────────────────────────────────────────
 transport = StreamableHTTPServerTransport(
@@ -75,17 +44,27 @@ async def lifespan(app):
             tg.cancel_scope.cancel()
 
 
+# ── Starlette App ────────────────────────────────────────────────────
 app = Starlette(
     debug=True,
-    routes=[Mount("/sse", app=transport.handle_request)],
+    routes=[
+        Mount("/sse", app=transport.handle_request),      # Part 1: MCP
+        Route("/chat", endpoint=chat_endpoint, methods=["POST"]),  # Part 2: Model
+    ],
     lifespan=lifespan,
 )
 
+
+# ── Startup banner ───────────────────────────────────────────────────
 if __name__ == "__main__":
     print(f"Loaded {len(TOOL_DEFS)} tool(s) from {TOOLS_FILE.name}:")
     for t in TOOL_DEFS:
-        print(f"  • {t['name']}  →  {t['url']}")
+        print(f"  - {t['name']}  ->  {t['url']}")
     print()
-    print("Starting MCP Streamable HTTP Server on http://0.0.0.0:3001")
-    print("MCP Endpoint: http://127.0.0.1:3001/sse")
-    uvicorn.run(app, host="0.0.0.0", port=3001)
+    print(f"LM Studio model : {LM_STUDIO_MODEL}")
+    print(f"LM Studio API   : {LM_STUDIO_BASE_URL}")
+    print()
+    print("Starting MCP Streamable HTTP Server on http://0.0.0.0:3002")
+    print("  MCP Endpoint : http://127.0.0.1:3002/sse")
+    print("  Chat Endpoint: http://127.0.0.1:3002/chat  (POST)")
+    uvicorn.run(app, host="0.0.0.0", port=3002)
