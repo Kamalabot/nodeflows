@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Chat Client</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2><i data-lucide="server"></i> MCP Client</h2>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Connected Servers</h3>
+                <ul id="server-list" class="list">
+                    <li class="loading">Loading mcp.json...</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Available Tools</h3>
+                <ul id="tool-list" class="list">
+                    <li class="empty-state">No tools loaded</li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="status-indicator">
+                    <div class="status-dot offline" id="connection-dot"></div>
+                    <span id="connection-status">Disconnected</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-container">
+            <header class="chat-header">
+                <div class="chat-title">
+                    <i data-lucide="bot"></i>
+                    <div>
+                        <h2>Agent</h2>
+                        <span class="subtitle">LM Studio + MCP</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="chat-messages" id="chat-messages">
+                <!-- Welcome Message -->
+                <div class="message bot">
+                    <div class="message-content">
+                        Hello! I am connected to your MCP tools. What would you like to know?
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <div class="input-wrapper">
+                    <textarea id="prompt-input" placeholder="Type a message..." rows="1"></textarea>
+                    <button id="send-btn" class="send-btn">
+                        <i data-lucide="send"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- EventSource Polyfill for custom headers -->
+    <script src="eventsource.min.js"></script>
+    <!-- Application Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
