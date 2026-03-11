@@ -79,17 +79,18 @@ async function init() {
 function connectMCP(sseUrl) {
     updateStatus('checking', 'Connecting to SSE...');
     
-    // Use polyfill to inject headers
-    const eventSource = new EventSourcePolyfill(sseUrl, {
-        headers: {
-            'Accept': 'text/event-stream'
-        }
-    });
+    // Force a trailing slash to prevent the 307 Redirect / 400 Bad Request loop
+    const stableUrl = sseUrl.endsWith('/') ? sseUrl : sseUrl + '/';
+    
+    // Use the native browser EventSource instead of EventSourcePolyfill
+    const eventSource = new EventSource(stableUrl);
 
-    eventSource.oninfo = (event) => {
-        // Starlette streamable_http sends an initialization event
-        // But often we just wait for the endpoint event
-        console.log("SSE Info:", event.data);
+    eventSource.onopen = () => {
+        console.log("Native SSE Connection opened directly.");
+    };
+
+    eventSource.onmessage = (event) => {
+        console.log("SSE Message:", event.data);
     };
 
     eventSource.addEventListener("endpoint", async (event) => {
@@ -103,11 +104,10 @@ function connectMCP(sseUrl) {
     });
 
     eventSource.onerror = (err) => {
-        console.error("SSE Error:", err);
+        console.error("Native SSE Error:", err);
         updateStatus('offline', 'Disconnected');
     };
 }
-
 // ── Step 2: Fetch Tools from MCP ────────────────────────────────────
 
 async function fetchTools() {

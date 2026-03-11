@@ -1,0 +1,12 @@
+[project]
+name = "tg-py"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "chainlit>=2.10.0",
+    "httpx>=0.28.1",
+    "mcp>=1.26.0",
+    "openai>=2.26.0",
+]
