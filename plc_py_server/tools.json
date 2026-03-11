@@ -1,0 +1,12 @@
+[
+  {
+    "name": "get_pc_health",
+    "description": "Returns CPU and memory layout of the host Windows machine from Node-RED.",
+    "url": "http://127.0.0.1:1880/api/pc_health"
+  },
+  {
+    "name": "get_plc_data",
+    "description": "Returns simulated live Modbus PLC data (sensors, counters, patterns) from Node-RED.",
+    "url": "http://127.0.0.1:1880/api/scada"
+  }
+]

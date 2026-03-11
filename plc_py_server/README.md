@@ -71,6 +71,71 @@ Once connected, the AI will have access to the following tools:
 - `get_pc_health`: Returns CPU and memory layout of the host Windows machine from Node-RED (`GET http://127.0.0.1:1880/api/pc_health`).
 - `get_plc_data`: Returns simulated live Modbus PLC data (sensors, counters, patterns) from Node-RED (`GET http://127.0.0.1:1880/api/scada`).
 
+## JSON-Driven Server (`server_rd_json.py`)
+
+An alternative server entry-point that reads tool definitions from an external **`tools.json`** file instead of hardcoding them. This lets you add, remove, or reconfigure tools without touching any Python code.
+
+### How it works
+
+1. At startup, `server_rd_json.py` loads `tools.json` from the same directory.
+2. Each entry in the JSON array becomes an MCP tool — `list_tools` is built dynamically from the array.
+3. When `call_tool` is invoked, the server looks up the tool's `url` from the loaded config and performs a `GET` request to that endpoint.
+
+### `tools.json` schema
+
+The file is a JSON array of tool objects:
+
+```json
+[
+  {
+    "name": "get_pc_health",
+    "description": "Returns CPU and memory layout of the host Windows machine from Node-RED.",
+    "url": "http://127.0.0.1:1880/api/pc_health"
+  },
+  {
+    "name": "get_plc_data",
+    "description": "Returns simulated live Modbus PLC data (sensors, counters, patterns) from Node-RED.",
+    "url": "http://127.0.0.1:1880/api/scada"
+  }
+]
+```
+
+| Field | Description |
+| --- | --- |
+| `name` | Unique tool name exposed to the AI client |
+| `description` | Human-readable description shown in tool listings |
+| `url` | The HTTP GET endpoint the server will call when the tool is invoked |
+
+### Running
+
+```bash
+uv run python server_rd_json.py
+```
+
+On startup it prints the loaded tools for quick verification:
+
+```
+Loaded 2 tool(s) from tools.json:
+  • get_pc_health  →  http://127.0.0.1:1880/api/pc_health
+  • get_plc_data   →  http://127.0.0.1:1880/api/scada
+
+Starting MCP Streamable HTTP Server on http://0.0.0.0:3001
+MCP Endpoint: http://127.0.0.1:3001/sse
+```
+
+### Adding a new tool
+
+Simply append an entry to `tools.json` and restart the server — no Python changes required:
+
+```json
+{
+  "name": "get_temperature",
+  "description": "Returns the current temperature reading from sensor 3.",
+  "url": "http://127.0.0.1:1880/api/temperature"
+}
+```
+
+
 ## Learnings / Troubleshooting
 
 ### 1. Missing Import — `Could not find name 'Route'`
